@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+          "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings cacheModelsEnabled="false" enhancementEnabled="false" lazyLoadingEnabled="false" maxRequests="300" maxSessions="100" maxTransactions="30" useStatementNamespaces="true" />
+	<sqlMap resource="META-INF/sqlmap/user-mapping.xml"/>
+</sqlMapConfig>
