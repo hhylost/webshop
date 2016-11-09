@@ -5,6 +5,18 @@
         http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+    <!--配置变量注入 -->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="order" value="1" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="locations">
+            <list>
+                <value>classpath:conf/config.properties </value>
+            </list>
+        </property>
+    </bean>
+
     <context:component-scan base-package="com.hhy.shop.web.module" />
 
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
@@ -14,10 +26,11 @@
     <bean id="freemarkerConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="location" value="classpath:conf/freemarker.properties"/>
     </bean>
+
     <!-- 配置freeMarker模板加载地址 -->
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <!-- 视图解析器在/WEB-INF/ftl/路径下扫描视图文件 -->
-        <property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+        <!-- 视图解析器在配置文件制定路径下扫描视图文件 -->
+        <property name="templateLoaderPath" value="file://${com.hhy.shop.template.templatePath}" />
         <property name="freemarkerVariables">
             <map>
                 <entry key="xml_escape" value-ref="fmXmlEscape" />
@@ -34,6 +47,7 @@
                 <value>*.ftl</value>
             </array>
         </property>
+        <property name="prefix" value="/home/views/" />
         <property name="contentType" value="text/html; charset=UTF-8" />
         <property name="exposeRequestAttributes" value="true" />
         <property name="exposeSessionAttributes" value="true" />

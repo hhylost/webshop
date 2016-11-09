@@ -13,6 +13,6 @@ public class ErrorController {
     @RequestMapping("/notfound")
     public String error404(Model model){
         model.addAttribute("errorMessage", "页面不存在！");
-        return "404.ftl";
+        return "error/404.ftl";
     }
 }
