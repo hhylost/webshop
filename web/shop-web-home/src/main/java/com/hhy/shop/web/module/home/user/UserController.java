@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Resource;
 
 /**
- * Created by lenovo on 2016/11/9.
+ * @author hehy
+ * @desc 用户中心
+ * @data 2016/11/29
  */
 @Controller
 public class UserController {
