@@ -30,6 +30,11 @@
             <artifactId>shop-biz-dal</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.hhy.shop</groupId>
+            <artifactId>shop-user-share</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
