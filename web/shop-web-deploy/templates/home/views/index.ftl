@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>hhy shop</title>
+    <link rel="Shortcut Icon" href="http://demo.sc.chinaz.com/Files/pic/iconsico/5563/38.ico" />
 </head>
 <body>
 <h2>${name}</h2>

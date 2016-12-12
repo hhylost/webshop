@@ -125,7 +125,7 @@
 
     <!-- 定义Spring日志 -->
     <logger name="org.springframework" additivity="false">
-        <level value="${com.hhy.loggingLevel}"/>
+        <level value="INFO"/>
         <appender-ref ref="ALL"/>
         <appender-ref ref="CONSOLE"/>
     </logger>
