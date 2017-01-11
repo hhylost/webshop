@@ -2,6 +2,7 @@ package com.hhy.shop.biz.manager.user.impl;
 
 import javax.annotation.Resource;
 
+import com.hhy.shop.biz.dal.user.UserDAO;
 import com.hhy.shop.biz.dal.user.dataobject.UserDO;
 import com.hhy.shop.biz.manager.user.UserManager;
 import com.hhy.shop.user.service.dto.UserDTO;

@@ -4,15 +4,15 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 							http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<!-- daoConfigBase -->
-	<import resource="classpath*:META-INF/spring/datasource.xml" />
+    <!-- daoConfigBase -->
+    <import resource="classpath*:META-INF/spring/datasource.xml"/>
 
-	<bean id="daoConfigBase" abstract="true">
-		<property name="sqlMapClient">
-			<ref bean="sqlMapClient" />
-		</property>
-	</bean>
+    <bean id="daoConfigBase" abstract="true">
+        <property name="sqlMapClient">
+            <ref bean="sqlMapClient"/>
+        </property>
+    </bean>
 
-	<bean id="userDAO" class="com.hhy.shop.biz.dal.user.impl.UserDAOImpl" parent="daoConfigBase" />
+    <bean id="userDAO" class="com.hhy.shop.biz.dal.user.impl.UserDAOImpl" parent="daoConfigBase"/>
 
 </beans>
