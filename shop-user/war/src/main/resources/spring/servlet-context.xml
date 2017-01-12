@@ -24,13 +24,6 @@
         </property>
     </bean>
 
-    <!-- 载入service -->
-    <import resource="classpath*:spring/dubbo-provider.xml"/>
-    <import resource="classpath*:spring/portalgops-biz-manager.xml"/>
-    <import resource="classpath*:/spring/portalgops-redis-biz-manager.xml"/>
-    <import resource="classpath*:/spring/hd-redis-services.xml"/>
-    <import resource="classpath*:/spring/portalgops-rpc-service.xml"/>
-
     <!-- 	<import resource="classpath*:spring/dubbo-customer.xml" /> -->
     <context:component-scan base-package="com.hhy.shop.user.service"/>
 

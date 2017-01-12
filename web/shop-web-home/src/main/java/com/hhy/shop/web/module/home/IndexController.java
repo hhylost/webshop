@@ -4,6 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @author hehy
  * @desc 网站首页
@@ -25,7 +29,9 @@ public class IndexController {
      * 网站首页2
      */
     @RequestMapping("/index2")
-    public String index_home(Model model) {
+    public String index_home(Model model, HttpServletResponse response) {
+        Cookie cookie = new Cookie("lastAccessTime", System.currentTimeMillis()+"");//创建一个cookie，cookie的名字是lastAccessTime
+        response.addCookie(cookie);
         model.addAttribute("name", "海宝宝");
         return "index.ftl";
     }
