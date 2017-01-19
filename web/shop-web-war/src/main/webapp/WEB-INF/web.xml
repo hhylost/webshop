@@ -12,7 +12,7 @@
     </context-param>
     <context-param>
         <param-name>log4jProperties</param-name>
-        <param-value>classpath:config/config.properties</param-value>
+        <param-value>classpath:conf/config.properties</param-value>
     </context-param>
     <context-param>
         <param-name>log4jRefreshInterval</param-name>

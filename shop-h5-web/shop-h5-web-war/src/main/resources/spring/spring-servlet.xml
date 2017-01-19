@@ -22,11 +22,10 @@
         </property>
     </bean>
 
-    <context:component-scan base-package="com.hhy.shop.web.module"/>
+    <context:component-scan base-package="com.hhy.shop.web.h5.module"/>
 
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
-    <import resource="classpath:/META-INF/spring/biz-services.xml"/>
     <!-- 配置Freemarker属性文件路径 -->
     <bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean">
         <!-- 视图解析器在配置文件制定路径下扫描视图文件 -->
