@@ -14,6 +14,7 @@
         <module>../shop-h5-web</module>
         <module>../shop-order</module>
         <module>../shop-search</module>
+        <module>../shop-sso</module>
         <module>../shop-user</module>
         <module>../web</module>
     </modules>
