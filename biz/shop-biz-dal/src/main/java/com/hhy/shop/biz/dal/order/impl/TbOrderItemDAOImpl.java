@@ -6,9 +6,9 @@
  */
 package com.hhy.shop.biz.dal.order.impl;
 
-import com.hhy.shop.biz.dal.base.BaseDAO;
 import com.hhy.shop.biz.dal.order.TbOrderItemDAO;
 import com.hhy.shop.biz.dal.order.dataobject.TbOrderItemDO;
+import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
@@ -21,7 +21,7 @@ import java.sql.SQLException;
  * To change this template use File | Settings | File Templates.
  */
 @Repository
-public class TbOrderItemDAOImpl extends BaseDAO implements TbOrderItemDAO{
+public class TbOrderItemDAOImpl extends SqlMapClientDaoSupport implements TbOrderItemDAO{
     /**
      * 添加
      * 
