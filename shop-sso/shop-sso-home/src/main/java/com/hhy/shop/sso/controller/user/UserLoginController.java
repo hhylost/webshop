@@ -1,4 +1,4 @@
-package com.hhy.shop.sso.web.module;
+package com.hhy.shop.sso.controller.user;
 
 /**
  * 用户登录控制器
