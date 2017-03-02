@@ -8,5 +8,7 @@ import com.hhy.shop.sso.dao.JedisClient;
  * @author hehy
  * @create 2017-02-21
  **/
+
 public class JedisClientImpl implements JedisClient{
+
 }

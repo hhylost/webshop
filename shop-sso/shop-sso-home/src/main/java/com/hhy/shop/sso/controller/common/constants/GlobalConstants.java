@@ -8,6 +8,7 @@ package com.hhy.shop.sso.controller.common.constants;
  **/
 public class GlobalConstants {
 
+    public static final String SHOP_SSO_SERVER = "shopSSOServer";
     public static final String SHOP_SERVER = "shopServer";
     public static final String STATIC_SERVER = "staticServer";
 

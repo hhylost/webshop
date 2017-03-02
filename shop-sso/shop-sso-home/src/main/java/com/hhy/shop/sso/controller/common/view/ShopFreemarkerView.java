@@ -29,6 +29,9 @@ public class ShopFreemarkerView extends FreeMarkerView {
     /** 静态服务器配置常量Key */
     private final static String STATIC_SERVER_KEY = "staticServer";
 
+    /** 静态服务器配置常量Key */
+    private final static String SHOP_SERVER_KEY = "shopServer";
+
     @Override
     protected void initServletContext(ServletContext servletContext) throws BeansException {
         super.initServletContext(servletContext);
@@ -66,9 +69,16 @@ public class ShopFreemarkerView extends FreeMarkerView {
                     + request.getScheme());
         }
 
+        String shopServer = (String) attributes.get(SHOP_SERVER_KEY);
+        if (logger.isInfoEnabled()) {
+            logger.info("mursi freemarker staticServer0000 >>> " + shopServer + "request scheme >> "
+                    + request.getScheme());
+        }
+
         // 页面渲染需要额外的几个非常量
         model.put(GlobalConstants.IMAGE_SERVER, CommonUtils.switchHttpAndHttps(imageServer, request.getScheme()));
         model.put(GlobalConstants.STATIC_SERVER, CommonUtils.switchHttpAndHttps(staticServer, request.getScheme()));
+        model.put(GlobalConstants.SHOP_SERVER, CommonUtils.switchHttpAndHttps(shopServer, request.getScheme()));
 
         // Start 只有在第三方登录进行DomainInterceptor拦截之后才会生效的代码
         String servername = (String) request.getAttribute(GlobalConstants.REQUEST_ATTR_KEY_SERVER_NAME);
@@ -76,7 +86,7 @@ public class ShopFreemarkerView extends FreeMarkerView {
             // 获取域名+上下文
             String domainservername = request.getScheme() + "://" + servername + CommonUtils.getServerPort(request)
                     + request.getContextPath();
-            model.put(GlobalConstants.SHOP_SERVER, domainservername);
+            model.put(GlobalConstants.SHOP_SSO_SERVER, domainservername);
         }
 
         if (logger.isInfoEnabled()) {

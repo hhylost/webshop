@@ -9,15 +9,14 @@
 <body>
 <div class="w">
     <div id="logo">
-    	<img src="${shopServer}/user/login/captcha" alt="商城" width="170" height="60" id="codeImage" onclick="chageCode();"/>
-        <a clstag="passport|keycount|login|01" onclick="chageCode();">换一张</a>
+        <a href="${shopServer}"><img src="${imageServer}/images/logo.png" alt="商城" width="170" height="60""/></a>
         <b></b>
-   	</div>
+    </div>
 </div>
 <form id="formlogin" method="post" onsubmit="return false;">
     <div class=" w1" id="entry">
         <div class="mc " id="bgDiv">
-            <div id="entry-bg" clstag="passport|keycount|login|02" style="width: 511px; height: 455px; position: absolute; left: -44px; top: -44px; background: url(/images/544a11d3Na5a3d566.png) 0px 0px no-repeat;">
+            <div id="entry-bg" clstag="passport|keycount|login|02" style="width: 511px; height: 455px; position: absolute; left: -44px; top: -44px; background: url(${imageServer}/images/544a11d3Na5a3d566.png) 0px 0px no-repeat;">
 			</div>
             <div class="form ">
                 <div class="item fore1">
@@ -42,6 +41,14 @@
                     <div class="item-ifo">
                         <input type="password" id="nloginpwd" name="password" class="text" tabindex="2" autocomplete="off"/>
                         <div class="i-pass ico"></div>
+                        <label id="loginpwd_succeed" class="blank invisible"></label>
+                        <label id="loginpwd_error" class="hide"></label>
+                    </div>
+                </div>
+                <div class="item fore3">
+                    <div class="item-ifo">
+                        <input type="text" id="nloginpwd" name="password" class="captcha_text" tabindex="2" autocomplete="off"/>
+                        <div class="captcha_img"><img src="${shopSSOServer}/user/login/captcha" alt="商城" id="codeImage" onclick="chageCode();"/></div>
                         <label id="loginpwd_succeed" class="blank invisible"></label>
                         <label id="loginpwd_error" class="hide"></label>
                     </div>

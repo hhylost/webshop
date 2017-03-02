@@ -59,7 +59,8 @@
         <entry key="imageServer" value="${com.hhy.shop.sso.image.server}" />
         <entry key="staticServer" value="${com.hhy.shop.sso.static.server}" />
         <!-- 当前应用域名 -->
-        <entry key="shopServer" value="${com.hhy.shop.sso.server}" />
+        <entry key="shopSSOServer" value="${com.hhy.shop.sso.server}" />
+        <entry key="shopServer" value="${com.hhy.shop.server}" />
         <entry key="isDev" value="${com.hhy.shop.sso.model.isdev}" />
     </util:map>
 
