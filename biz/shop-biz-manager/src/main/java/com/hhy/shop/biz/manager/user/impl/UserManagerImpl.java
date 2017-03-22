@@ -18,21 +18,13 @@ import org.springframework.beans.BeanUtils;
 public class UserManagerImpl implements UserManager {
     private static final Log LOGGER = LogFactory.getLog(UserManagerImpl.class);
     @Resource
-    private UserService userService;
+    private UserDAO userDAO;
 
     @Override
     public UserDO getUserName(Long userId) {
-        UserDO userDO = new UserDO();
-        ResponseDTO<UserDTO> result = userService.getUserByUserId(userId);
-        if (null == result) {
-            LOGGER.error("调用服务错误！");
-            return null;
-        }
-        if (null != result.getData()) {
-            UserDTO userDTO = result.getData();
-            BeanUtils.copyProperties(userDTO, userDO);
-        } else {
-            LOGGER.error(result.getMessage());
+        UserDO userDO = userDAO.getUserName(userId);
+        if (null == userDO) {
+            LOGGER.error("获取用户信息出错");
             return null;
         }
         return userDO;
