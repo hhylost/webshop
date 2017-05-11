@@ -6,5 +6,7 @@ import com.hhy.shop.biz.dal.user.dataobject.UserDO;
  * Created by lenovo on 2016/10/17.
  */
 public interface UserDAO {
-    public UserDO getUserName(Long userId);
+    UserDO getUserName(Long userId);
+
+    Long insert(UserDO userDO);
 }
