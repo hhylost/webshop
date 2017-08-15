@@ -29,4 +29,16 @@ public class UserManagerImpl implements UserManager {
         }
         return userDO;
     }
+
+    @Override
+    public Long insert(UserDO userDO) {
+        return userDAO.insert(userDO);
+    }
+
+    @Override
+    public UserDO getUserByUserId(Long userId) {
+        return userDAO.getUserName(userId);
+    }
+
+
 }

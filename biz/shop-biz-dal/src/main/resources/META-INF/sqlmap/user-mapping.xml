@@ -1,37 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap
-		PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
-		"http://www.ibatis.com/dtd/sql-map-2.dtd">
+        PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
 <sqlMap namespace="user">
-	<typeAlias alias="user" type="com.hhy.shop.biz.dal.user.dataobject.UserDO" />
+    <typeAlias alias="userDO" type="com.hhy.shop.biz.dal.user.dataobject.UserDO"/>
+    <typeAlias alias="userPageQuery" type="com.hhy.shop.biz.dal.user.query.UserPageQuery" />
 
-	<insert id="insertUser" parameterClass="user">
-		<![CDATA[
-           insert into tb_user values (#id#,#username#,#password#)
+    <resultMap id="baseResult" class="userDO">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="created" column="created"/>
+        <result property="updated" column="updated"/>
+    </resultMap>
+
+    <sql id="masterStatement">
+        <![CDATA[SELECT id,username,password,phone,email,created,updated
+        	FROM tb_user]]>
+    </sql>
+
+    <sql id="findWhereStatement">
+        <isNotEmpty prepend="AND" property="email"> email=#email# </isNotEmpty>
+        <isNotEmpty prepend="AND" property="phone"> phone=#phone# </isNotEmpty>
+        <isNotEmpty prepend="AND" property="isDelete"> isDelete=#isDelete# </isNotEmpty>
+        <isNotEmpty prepend="AND" property="username"> username like concat(#username#,'%') </isNotEmpty>
+        <isNotEmpty prepend="AND" property="gmtStartUpdate"> updated <![CDATA[ >= ]]> #gmtStartUpdate# </isNotEmpty>
+        <isNotEmpty prepend="AND" property="gmtEndUpdate"> updated <![CDATA[ <= ]]> #gmtEndUpdate# </isNotEmpty>
+    </sql>
+
+    <insert id="insertUser" parameterClass="userDO">
+        <![CDATA[
+           insert into tb_user (username, password, created,updated) values (#username#,#password#,now(),now())
        ]]>
-	</insert>
+    </insert>
 
-	<delete id="deleteById" parameterClass="Long">
-		<![CDATA[
+    <delete id="deleteById" parameterClass="Long">
+        <![CDATA[
            delete from tb_user where id=#id#
         ]]>
-	</delete>
+    </delete>
 
-	<update id="updateUser" parameterClass="user">
-		<![CDATA[
+    <update id="updateUser" parameterClass="userDO">
+        <![CDATA[
                update tb_user set username=#username#,password=#password# where id=#id#
          ]]>
-	</update>
+    </update>
 
-	<select id="queryById" parameterClass="Long" resultClass="user">
-		<![CDATA[
+    <select id="queryById" parameterClass="Long" resultClass="userDO">
+        <![CDATA[
               select * from tb_user where id=#id#
          ]]>
-	</select>
+    </select>
 
-	<select id="queryAllUser" cacheModel="personCache" resultClass="user">
-		<![CDATA[
+    <select id="queryAllUser" cacheModel="personCache" resultClass="userDO">
+        <![CDATA[
                select * from tb_user
          ]]>
-	</select>
+    </select>
+    <!-- 搜索记录 -->
+    <select id="listByPageQuery" parameterClass="userPageQuery"
+            resultMap="baseResult">
+        <include refid="masterStatement"/>
+        <dynamic prepend="where">
+            <include refid="findWhereStatement"/>
+        </dynamic>
+        ORDER BY updated DESC
+        <dynamic prepend="limit">
+            <isEqual property="isPagination" compareValue="true">
+                #recordIndex#,#pageSize#
+            </isEqual>
+        </dynamic>
+    </select>
+
+    <!-- 搜索记录 -->
+    <select id="listByPageQuery_count" parameterClass="userPageQuery"
+            resultClass="java.lang.Integer">
+        SELECT count(*) as cn FROM tb_user
+        <dynamic prepend="where">
+            <include refid="findWhereStatement"/>
+        </dynamic>
+    </select>
 </sqlMap>
